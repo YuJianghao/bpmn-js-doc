@@ -4,11 +4,13 @@ sidebar_position: 1
 
 # Styles
 
-> A component that manages shape styles
-
 ```ts
 declare module "diagram-js/lib/draw/Styles" {
   export type StyleDefinition = Record<string, unknown>
+
+  /**
+   * A component that manages shape styles
+   */
   export default class Styles {
     /**
      * Builds a style definition from a className, a list of traits and an object of additional attributes.

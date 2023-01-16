@@ -65,4 +65,28 @@ export default {
 };
 ```
 
-接下来就依次看这些 `Modules`
+接下来就依次看这些 `Modules`，如果你不知道讲到哪了，可以回这页看目录：
+
+```mermaid
+graph TD;
+    modules-->ConfigModules;
+    modules-->CoreModule;
+    CoreModule-->DrawModule;
+    DrawModule-->Styles;
+    DrawModule-->DefaultRenderer;
+    DefaultRenderer-->BaseRenderer;
+    DefaultRenderer-->model;
+    BaseRenderer-->model;
+    BaseRenderer-->EventBus;
+    CoreModule-->EventBus;
+    CoreModule-->ElementFactory;
+    CoreModule-->ElementRegistry;
+    CoreModule-->GraphicsFactory;
+    CoreModule-->Canvas;
+    ElementRegistry-->EventBus;
+    GraphicsFactory-->EventBus;
+    GraphicsFactory-->ElementRegistry;
+    Canvas-->EventBus;
+    Canvas-->GraphicsFactory;
+    Canvas-->ElementRegistry;
+```
