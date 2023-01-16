@@ -6,12 +6,12 @@ sidebar_position: 2
 
 从源码看起，定位到入口文件：
 
-```js {2} showLineNumbers
+```js {2}
 // index.js
 export { default } from './lib/Diagram';
 ```
 
-```js {3,9-13,17} showLineNumbers
+```js {3,9-13,17}
 // lib/Diagram.js
 export default function Diagram(options, injector) {
   this.injector = injector = injector || createInjector(options); // 看这里
