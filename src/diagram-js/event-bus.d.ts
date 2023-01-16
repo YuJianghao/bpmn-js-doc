@@ -1,5 +1,5 @@
 declare module "diagram-js/lib/core/EventBus" {
-  export class InternalEvent {
+  export interface InternalEvent {
     stopPropagation(): void
     preventDefault(): void
     init(data: any): void
