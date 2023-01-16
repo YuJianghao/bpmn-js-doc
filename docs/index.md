@@ -30,9 +30,11 @@ sidebar_position: 1
 
 没有 API 文档就没有详细的使用参考。总会出现突然冒出来一个 API 发现好像可以用，又好像不太可以用的情况。
 
+## 目标
+
 所以决定写一个文档站，尽可能详细描述下 bpmn-js 的系列 API。
 
-## 目标读者
+## 读者
 
 希望你：
 
@@ -62,10 +64,10 @@ graph TD;
 图中我只列出了一些重要的模块，工具模块被省略了。
 
 - `didi`: [控制反转(IoC) 和依赖注入(DI)](https://en.wikipedia.org/wiki/Inversion_of_control)工具
-- `diagram-js`: 基于 `didi` 实现的作图工具，提供了基础的画布和控件功能，同时通过插件提供了一系列预制功能。
+- `diagram-js`: 基于 `didi` 实现的作图工具，提供了基础的画布和控件功能，同时通过插件和强大的扩展系统提供一系列能力。
 - `moddle`: 用于管理对象属性和对象关系的工具
 - `moddle-xml`: 用于将对象结构和 xml 文件互相转换的工具
-- `bpmn-moddle`: 用于 bpmn 的 `moddle`。有 xml 导入导出功能和 bpmn 元素定义。
+- `bpmn-moddle`: 读写 BPMN 2.0 xml 提供 BPMN 元数据和数据模型。
 
 除了控制反转外，会依次讲解。
 

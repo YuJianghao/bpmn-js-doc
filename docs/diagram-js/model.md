@@ -10,6 +10,11 @@ sidebar_position: 3
 后期还会有 `ModdleElement`、`GraphicsElement`，要注意区分。
 :::
 
+- Root 一般用于整个画布的定义。
+- Shape 指画布上的元素节点。
+- Connection 指画布上的各类连线。
+- Label 指标签。
+
 ```ts
 declare module "diagram-js/lib/model" {
   export class Base {

@@ -1,5 +1,6 @@
 declare module "diagram-js/lib/core/EventBus" {
   export interface InternalEvent {
+    type: string
     cancelBubble: boolean
     defaultPrevented: boolean
     stopPropagation(): void
@@ -7,7 +8,7 @@ declare module "diagram-js/lib/core/EventBus" {
     init(data: any): void
   }
   export type EventCallback = (
-    e: InternalEvent & { type: string },
+    e: InternalEvent,
     ...args: any[]
   ) => void
   /**
