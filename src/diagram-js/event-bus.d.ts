@@ -1,12 +1,3 @@
----
-sidebar_position: 2
----
-
-# EventBus
-
-事件总线
-
-```ts
 declare module "diagram-js/lib/core/EventBus" {
   export class InternalEvent {
     stopPropagation(): void
@@ -61,10 +52,3 @@ declare module "diagram-js/lib/core/EventBus" {
     fire<T extends { type: string }>(data: T, ...args: any[]): any
   }
 }
-```
-
-实现了 eventBus 需要的 on/off/once/fire 的基本功能。
-
-## 原理
-
-TODO
