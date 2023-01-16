@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # DefaultRenderer
 
-定义了一个默认的 Renderer。
+定义了一个默认的 Renderer，在没有外部定义 Renderer 的时候使用。
 
 ```ts {23}
 declare module "diagram-js/lib/draw/DefaultRenderer" {
@@ -17,3 +17,5 @@ declare module "diagram-js/lib/draw/DefaultRenderer" {
   }
 }
 ```
+
+到这里为止 `DrawModule` 就全部讲完了。可以回看下[目录](./index.md)
