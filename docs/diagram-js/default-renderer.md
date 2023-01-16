@@ -14,6 +14,7 @@ declare module "diagram-js/lib/draw/DefaultRenderer" {
   import EventBus from "diagram-js/lib/core/EventBus"
   export class DefaultRenderer implements IRenderer {
     constructor(eventBus: EventBus, styles: Styles)
+    static $inject: ['eventBus', 'styles']
   }
 }
 ```
@@ -31,6 +32,7 @@ graph TD;
     DefaultRenderer-->model["#9989; model"];
     BaseRenderer-->model["#9989; model"];
     BaseRenderer-->EventBus["#9989; EventBus"];
+    DefaultRenderer-->EventBus["#9989; EventBus"];
     CoreModule-->EventBus["#9989; EventBus"];
     CoreModule-->ElementFactory;
     CoreModule-->ElementRegistry;

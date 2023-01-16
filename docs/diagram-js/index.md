@@ -78,6 +78,7 @@ graph TD;
     DefaultRenderer-->model;
     BaseRenderer-->model;
     BaseRenderer-->EventBus;
+    DefaultRenderer-->EventBus;
     CoreModule-->EventBus;
     CoreModule-->ElementFactory;
     CoreModule-->ElementRegistry;
