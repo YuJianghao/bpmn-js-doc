@@ -45,3 +45,40 @@ declare module "diagram-js/lib/draw/BaseRenderer" {
 `drawShape` 和 `drawConnection` 方法就是往 svgElement 中按照一个约定画一些内容，从而实现自定义的渲染样式。这个约定后期会在 `CanvasModule` 中讲到。
 
 `drawShapePath` 和 `drawConnectionPath` 用于绘制图形的可见区域边界，用于后期裁剪连线。
+
+## 原理
+
+利用 `EventBus` 提供的事件注册和优先级机制，注册所有的渲染器，并且控制最终生效的渲染器。在监听到渲染事件的时候，调用对应方法完成渲染。
+
+```js {6,21}
+export default function BaseRenderer(eventBus, renderPriority) {
+  var self = this;
+
+  renderPriority = renderPriority || DEFAULT_RENDER_PRIORITY;
+
+  eventBus.on([ 'render.shape', 'render.connection' ], renderPriority, function(evt, context) {
+    var type = evt.type,
+        element = context.element,
+        visuals = context.gfx,
+        attrs = context.attrs;
+
+    if (self.canRender(element)) {
+      if (type === 'render.shape') {
+        return self.drawShape(visuals, element, attrs);
+      } else {
+        return self.drawConnection(visuals, element, attrs);
+      }
+    }
+  });
+
+  eventBus.on([ 'render.getShapePath', 'render.getConnectionPath' ], renderPriority, function(evt, element) {
+    if (self.canRender(element)) {
+      if (evt.type === 'render.getShapePath') {
+        return self.getShapePath(element);
+      } else {
+        return self.getConnectionPath(element);
+      }
+    }
+  });
+}
+```
