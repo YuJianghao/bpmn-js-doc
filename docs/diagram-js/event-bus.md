@@ -1,40 +1,12 @@
-declare module "diagram-js/lib/draw/Styles" {
-  export type StyleDefinition = Record<string, unknown>
-  /**
-   * A component that manages shape styles
-   */
-  export default class Styles {
-    /**
-     * Builds a style definition from a className, a list of traits and an object of additional attributes.
-     */
-    cls(
-      className: string,
-      traits: string[],
-      additionalAttrs?: StyleDefinition
-    ): StyleDefinition
-    cls(className: string, additionalAttrs?: StyleDefinition): StyleDefinition
+---
+sidebar_position: 2
+---
 
-    /**
-     * Builds a style definition from a list of traits and an object of additional attributes.
-     */
-    style(traits: string[], additionalAttrs?: StyleDefinition): StyleDefinition
-    style(additionalAttrs?: StyleDefinition): StyleDefinition
+# EventBus
 
-    /**
-     * 从自定义、默认和预设中计算样式
-     */
-    computeStyle(
-      custom: StyleDefinition,
-      traits: string[],
-      defaultStyles: StyleDefinition
-    ): StyleDefinition
-    computeStyle(
-      custom: StyleDefinition,
-      defaultStyles: StyleDefinition
-    ): StyleDefinition
-  }
-}
+事件总线
 
+```ts
 declare module "diagram-js/lib/core/EventBus" {
   export class InternalEvent {
     stopPropagation(): void
@@ -85,3 +57,10 @@ declare module "diagram-js/lib/core/EventBus" {
     fire<T extends { type: string }>(data: T, ...args: any[]): any
   }
 }
+```
+
+实现了 eventBus 需要的 on/off/once/fire 的基本功能。
+
+## 原理
+
+TODO
