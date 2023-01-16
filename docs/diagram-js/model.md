@@ -4,7 +4,11 @@ sidebar_position: 3
 
 # model
 
-`model` 定义了绘图用到的 Element，我称之为 `GraphElement`，是 JavaScript 对象。后期还会有 `ModdleElement`、`GraphicsElement`，要注意区分。
+`model` 定义了绘图用到的 Element，我称之为 `GraphElement`，是 JavaScript 对象。包含自身的位置信息，尺寸，和其他 Element 的父子兄弟关系，标签 label 等信息。还暴露了一个 `create` 方法用于创建对象。
+
+:::info
+后期还会有 `ModdleElement`、`GraphicsElement`，要注意区分。
+:::
 
 ```ts
 declare module "diagram-js/lib/model" {

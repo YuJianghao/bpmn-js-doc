@@ -19,11 +19,13 @@ declare module "diagram-js/lib/draw/DefaultRenderer" {
 }
 ```
 
+---
+
 到这里为止 `DrawModule` 就全部讲完了。可以回看下目录：
 
 ```mermaid
 graph TD;
-    modules-->ConfigModules;
+    modules-->ConfigModules["#9989; ConfigModules"];
     modules-->CoreModule;
     CoreModule-->DrawModule["#9989; DrawModule"];
     DrawModule-->Styles["#9989; Styles"];
@@ -46,3 +48,5 @@ graph TD;
     Canvas-->ElementRegistry;
     ElementFactory-->model["#9989; model"];
 ```
+
+接下来依次讲 `ElementFactory`、`ElementRegistry`、`GraphicsFactory` 和 `Canvas`。
