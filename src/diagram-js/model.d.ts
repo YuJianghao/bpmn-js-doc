@@ -1,5 +1,6 @@
 declare module "diagram-js/lib/model" {
   export class Base {
+    id: string
     businessObject: any
     label: Label
     parent: Shape
