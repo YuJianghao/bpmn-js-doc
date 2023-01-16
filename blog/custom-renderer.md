@@ -1,0 +1,110 @@
+---
+authors: winwin2011
+---
+# 自定义渲染器 CustomRenderer
+
+如何自定义一个 bpmn-js 自定义渲染器（custom-renderer），将 `bpmn:ServiceTask` 渲染成一个（不怎么）漂亮的方块？
+
+<!--truncate-->
+
+## 原理
+
+首先要明白，`bpmn-js` 的渲染逻辑是通过 `diagram-js` 实现的，具体的是通过向 `BaseRenderer` 注册 Renderer 实现：
+
+一个 Renderer 需要实现 IRenderer 接口，参见[过去的文章](../docs/diagram-js/base-renderer)
+
+Renderer 需要在初始化时向 BaseRenderer 注册自己：
+
+```js
+BaseRenderer.call(renderer, eventBus, renderPriority)
+```
+
+最后暴露为一个 Module 并且启用
+
+## 实现
+
+首先定义一个 Renderer，确定我们只能渲染 `bpmn:ServiceTask`。
+
+```js
+import {is} from 'bpmn-js/lib/util/ModelUtil'
+
+class CustomRenderer {
+  canRender(element) {
+    return is(element, 'bpmn:ServiceTask');
+  }
+}
+```
+
+然后实现 `drawShape` 画出想要的样子
+
+```js
+import { is } from "bpmn-js/lib/util/ModelUtil";
+import {
+  append as svgAppend,
+  attr as svgAttr,
+  create as svgCreate,
+  transform as svgTransform,
+  createTransform
+} from "tiny-svg";
+import BaseRenderer from "diagram-js/lib/draw/BaseRenderer";
+
+class CustomRenderer {
+  drawShape(visuals, element) {
+    const container = svgCreate("g");
+    const rect = svgCreate("rect");
+    svgAttr(rect, {
+      fill: "#6647d2",
+      stroke: "#777",
+      strokeWidth: 1,
+      width: element.width,
+      height: element.height,
+      borderRadius: 10
+    });
+    svgAppend(container, rect);
+    const circle = svgCreate("circle");
+    svgAttr(circle, {
+      cx: 0,
+      cy: 0,
+      r: 25,
+      fill: "#f8cf45"
+    });
+    const translate = createTransform();
+    translate.setTranslate(element.width / 2, element.height / 2);
+    svgTransform(circle, translate);
+    svgAppend(container, circle);
+    svgAppend(visuals, container);
+    return container;
+  }
+}
+```
+
+如果有需要，还可以通过 `drawShapePath` 画一下元素可视范围的路径，不过一般不需要。
+
+然后将 `CustomRenderer` 注册到 `BaseRenderer`。
+
+```js
+class CustomRenderer {
+  constructor(eventBus) {
+    BaseRenderer.call(this, eventBus, 2000);
+  }
+}
+CustomRenderer.$inject = ['eventBus'];
+```
+
+导出一个 Module，并载入
+
+```js
+export default {
+  __init__: ["customRenderer"],
+  customRenderer: ["type", CustomRenderer]
+};
+```
+
+## 结果
+
+<iframe src="https://codesandbox.io/embed/bpmn-custom-renderer-50bes5?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fcustom-renderer.js&theme=dark"
+     style={{width: '100%', height: 500, border:0, borderRadius: 4, overflow: 'hidden'}}
+     title="bpmn-custom-renderer"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
