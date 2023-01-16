@@ -18,4 +18,29 @@ declare module "diagram-js/lib/draw/DefaultRenderer" {
 }
 ```
 
-到这里为止 `DrawModule` 就全部讲完了。可以回看下[目录](./index.md)
+到这里为止 `DrawModule` 就全部讲完了。可以回看下目录：
+
+```mermaid
+graph TD;
+    modules-->ConfigModules;
+    modules-->CoreModule;
+    CoreModule-->DrawModule["#9989; DrawModule"];
+    DrawModule-->Styles["#9989; Styles"];
+    DrawModule-->DefaultRenderer["#9989; DefaultRenderer"];
+    DefaultRenderer-->BaseRenderer["#9989; BaseRenderer"];
+    DefaultRenderer-->model["#9989; model"];
+    BaseRenderer-->model["#9989; model"];
+    BaseRenderer-->EventBus["#9989; EventBus"];
+    CoreModule-->EventBus["#9989; EventBus"];
+    CoreModule-->ElementFactory;
+    CoreModule-->ElementRegistry;
+    CoreModule-->GraphicsFactory;
+    CoreModule-->Canvas;
+    ElementRegistry-->EventBus["#9989; EventBus"];
+    GraphicsFactory-->EventBus["#9989; EventBus"];
+    GraphicsFactory-->ElementRegistry;
+    Canvas-->EventBus["#9989; EventBus"];
+    Canvas-->GraphicsFactory;
+    Canvas-->ElementRegistry;
+    ElementFactory-->model["#9989; model"];
+```

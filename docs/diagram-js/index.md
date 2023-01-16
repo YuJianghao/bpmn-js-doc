@@ -89,4 +89,5 @@ graph TD;
     Canvas-->EventBus;
     Canvas-->GraphicsFactory;
     Canvas-->ElementRegistry;
+    ElementFactory-->model;
 ```
