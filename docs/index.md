@@ -43,7 +43,7 @@ sidebar_position: 1
 而不是：
 
 - 想要一个 bpmn-js 的 Vue/React/Xxx 封装
-- 想要一个 bpmn-js 使用教程
+- ~~想要一个 bpmn-js 使用教程~~ [看 Blog，开始写了](../blog)
 - 想要了解 bpmn 本身的相关概念（[可以看这里](https://docs.awspaas.com/reference-guide/aws-paas-process-reference-guide/index.html)）
 
 ## 目录
