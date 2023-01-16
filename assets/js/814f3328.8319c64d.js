@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbpmn_js_doc=self.webpackChunkbpmn_js_doc||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"\u81ea\u5b9a\u4e49\u6e32\u67d3\u5668 CustomRenderer","permalink":"/bpmn-js-doc/blog/custom-renderer"}]}')}}]);
