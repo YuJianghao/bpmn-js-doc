@@ -36,7 +36,7 @@ declare module "diagram-js/lib/core/ElementRegistry" {
 }
 ```
 
-实现了一些注册表相关的功能，重要的是内部存储的每一个对象（`_elements`）的结构：
+实现了一些注册表相关的功能，重要的是内部存储结构。内部存储了一个 map：`_elements`
 
 ```ts
 interface IElement {
@@ -44,9 +44,11 @@ interface IElement {
   gfx: GraphicsElement
   secondaryGfx?: SVGGElement
 }
+class ElementRegistry {
+  private _elements: Record<string, IElement>
+}
 ```
 
-具体的实现原理不是很重要，而且也不难。
+所有的操作都围绕着对这个 map 和 map 中每一个对象的增删改查展开。具体的实现原理不是很重要，而且也不难。
 
 > GraphicsElement 见 [GraphicsFactory](./graphics-factory)
-> 
