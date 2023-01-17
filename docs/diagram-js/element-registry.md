@@ -41,9 +41,12 @@ declare module "diagram-js/lib/core/ElementRegistry" {
 ```ts
 interface IElement {
   element: GraphElement
-  gfx: SVGGElement
+  gfx: GraphicsElement
   secondaryGfx?: SVGGElement
 }
 ```
 
 具体的实现原理不是很重要，而且也不难。
+
+> GraphicsElement 见 [GraphicsFactory](./graphics-factory)
+> 
