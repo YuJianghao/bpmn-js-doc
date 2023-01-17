@@ -79,8 +79,12 @@ declare module "diagram-js/lib/core/GraphicsFactory" {
 
 定义了一系列操作图形的方法：
 
-- `create` 根据给定的类型和数据在对应 index 创建一个节点，GraphicsElement。
+- `create` 根据给定的类型和数据在对应 index 创建一个节点，GraphicsElement。创建的位置在 element.parent 对应的 djs-children 区域。
 - `updateContainments` elements 涉及到的父元素的所有子 GraphicsElement 进行排序。
 - `drawXxx` 和 `getXxxPath` 会触发 `render.*` 的事件，可以看 [BaseRenderer](./base-renderer) 中提到的事件。
 - `update` TODO
 - `remove` 移除 GraphElement 对应的 GraphicsElement
+
+:::note
+有个问题：`create` 时，如果画 Root 没有 element.parent 怎么办？
+:::
