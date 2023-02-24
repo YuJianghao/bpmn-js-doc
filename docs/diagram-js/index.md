@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # diagram-js
 
+`diagram-js` 提供了完整的 `svg` 绘图功能。是 `bpmn-js` 编辑器图形部分的基础。
+
+## 源码分析
+
 从源码看起，定位到入口文件：
 
 ```js {2}
