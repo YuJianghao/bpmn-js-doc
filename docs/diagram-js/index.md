@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # diagram-js
 
-`diagram-js` 提供了完整的绘图和控件功能。是 `bpmn-js` 编辑器图形部分的基础。
+`diagram-js` 提供了完整的绘图和控件功能。是 `bpmn-js` 编辑器图形部分的基础，同时也是 `bpmn-js` 整个框架的地基。两者的使用方式是极其相似的，学会如何使用 `diagram-js` 对于学习 `bpmn-js` 帮助极大。
 
 ## 创建一个 `diagram-js` 实例
 
